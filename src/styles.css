@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import './assets/css/reset.css';
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+* {
+    font-family: Roboto;
+}
+
+a {
+    color: #000;
+}
+
+.space-between-cards {
+    margin-top: 15px;
+}
+
+.title-title {
+    font-family: 'Abril Fatface', Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+
+.title-title-mini {
+    font-family: 'Abril Fatface', Arial, Helvetica, sans-serif;
+}
+
+.toolbar-title {
+    font-size: 19px;
+    font-weight: bolder;
+    left: 0;
+    margin: 0;
+    width: 25%;
+}
