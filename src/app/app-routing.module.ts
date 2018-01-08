@@ -9,6 +9,8 @@ import { LoginComponent } from './components/login/login.component';
 /**
  * Guards
  */
+import { AuthGuard } from './modules/shared/guards/auth.guard';
+import { ProfileGuard } from './modules/shared/guards/profile.guard';
 
 /**
  * Modules
@@ -23,7 +25,8 @@ const routes: Routes = [{
   component: LoginComponent
 }, {
   path: 'main',
-  loadChildren: './modules/main/main.module#MainModule'
+  loadChildren: './modules/main/main.module#MainModule',
+  canActivate: [AuthGuard, ProfileGuard]
 }];
 
 @NgModule({

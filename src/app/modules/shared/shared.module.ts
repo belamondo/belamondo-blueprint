@@ -29,12 +29,15 @@ import 'hammerjs';
 /**
  * Components
  */
-
 import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { MenuSidenavComponent } from './components/menu-sidenav/menu-sidenav.component';
 
 /**
  * Guards
  */
+import { AuthGuard } from './guards/auth.guard';
+import { ProfileGuard } from './guards/profile.guard';
 
 /**
  * Modules
@@ -49,6 +52,8 @@ import { StringToHtmlPipe } from './pipes/string-to-html.pipe';
 /**
  * Services
  */
+import { AuthenticationService } from './services/laravel/authentication.service';
+import { CrudService } from './services/laravel/crud.service';
 
 @NgModule({
   imports: [
@@ -74,6 +79,7 @@ import { StringToHtmlPipe } from './pipes/string-to-html.pipe';
   ],
   exports:[
     LoginComponent,
+    LogoutComponent,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
@@ -90,16 +96,22 @@ import { StringToHtmlPipe } from './pipes/string-to-html.pipe';
     MatSnackBarModule,
     MatStepperModule,
     MatToolbarModule,
+    MenuSidenavComponent,
     ReactiveFormsModule,
     StringToHtmlPipe,
     TextMaskModule
   ],
   declarations: [
     LoginComponent,
+    LogoutComponent,
+    MenuSidenavComponent,
     StringToHtmlPipe
   ],
   providers: [
-    StringToHtmlPipe
+    AuthenticationService,
+    AuthGuard,
+    CrudService,
+    ProfileGuard
   ],
   entryComponents: [
     

@@ -4,7 +4,7 @@ import { MatSnackBar, MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 
 /**Services */
-//import { AuthenticationService } from './../../services/firebase/authentication.service';
+import { AuthenticationService } from './../../services/laravel/authentication.service'
 
 /**
  * Components
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   imageTitle: string;
 
   constructor(
-    //private authentication: AuthenticationService,
+    private authentication: AuthenticationService,
     public dialog: MatDialog,
     private matsnackbar: MatSnackBar,
     private router: Router
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     }
 
     this.loginForm = new FormGroup({
-      'login': new FormControl(null, [Validators.required, Validators.email,Validators.maxLength(191)]),
+      'login': new FormControl(null, [Validators.required, Validators.maxLength(191)]),
       'password': new FormControl(null, [Validators.required,Validators.maxLength(191)])
     })
   }
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
     this.params.login = this.loginForm.get('login');
     this.params.password = this.loginForm.get('password');
     
-    /*this.authentication.login(this.params)
+    this.authentication.login(this.params)
     .catch(error => {
       this.matsnackbar.open(error.message, '', {
         duration: 2000
@@ -87,6 +87,6 @@ export class LoginComponent implements OnInit {
         
         this.router.navigate(this.params.routeAfterLoggedIn);
       }
-    });*/
+    });
   }
 }

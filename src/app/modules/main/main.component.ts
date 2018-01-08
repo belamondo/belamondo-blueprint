@@ -17,10 +17,10 @@ export class MainComponent implements OnInit {
         description: "Convite para usuário",
         route: ['/main/user-register']
       }, {
-        description: "Documento",
+        description: "Eventos",
         route: ['/main/document']
       }, {
-        description: "Atividade econômica",
+        description: "Itens",
         route: ['/main/economic-activity']
       }], paramsToLogout: {
         routeAfterLogout: ['/login']
