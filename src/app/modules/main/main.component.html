@@ -1,5 +1,5 @@
 <mat-toolbar>
-    <div id="menu-sidenav">
+    <div id="menu-sidenav" *ngIf="paramsToMenuSidenav">
         <ntm-menu-sidenav [params]="paramsToMenuSidenav"></ntm-menu-sidenav>
     </div>
 

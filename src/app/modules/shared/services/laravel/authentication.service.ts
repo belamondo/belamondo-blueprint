@@ -7,8 +7,9 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { environment } from './../../../../../environments/environment';
 
 /**
- * Others libraries
+ * RxJs
  */
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 
@@ -19,10 +20,46 @@ export class AuthenticationService {
   optionsToAuth: RequestOptions;
   url = environment.urlToOauthToken;
   urlToApi = environment.urlToApi;
+  user: any;
 
   constructor(
     private http: Http
   ) { }
+  
+  setUser = () => new Promise((resolve, reject) => {
+    this.headersToAuth = new Headers({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Authorization': sessionStorage.getItem('access_token')
+    });
+
+    this.optionsToAuth = new RequestOptions({
+      'headers': this.headersToAuth
+    })
+
+    this.http
+    .get(
+      this.urlToApi+'user',
+      this.optionsToAuth
+    )
+    .subscribe(res => {
+      this.user = JSON.parse(res['_body']);
+
+      if(this.user.id) {
+        resolve(this.user);
+      } else {
+        resolve(false);
+      }
+    }, error => {
+      resolve(false);
+    }, () => {
+
+    })
+  })
+
+  getUser = () => {
+    return this.user;
+  }
 
   login = (params) => new Promise((resolve, reject) => {
     let temp;
@@ -35,7 +72,7 @@ export class AuthenticationService {
     this.optionsToAuth = new RequestOptions({
       'headers': this.headersToAuth
     })
-    console.log(params.login)
+
     this.http
     .post(
       this.url,
@@ -66,11 +103,7 @@ export class AuthenticationService {
         })
       }
     }, () => {
-      console.log("Nada")
+      
     })
   })
-
-  checkIfLoggedInAndReturnUser = () => {
-    return true;
-  }
 }

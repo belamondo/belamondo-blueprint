@@ -3,10 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 
-/**
- * Services
- */
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',

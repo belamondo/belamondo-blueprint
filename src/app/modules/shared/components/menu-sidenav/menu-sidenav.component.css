@@ -10,6 +10,12 @@ a {
     z-index: 300;
 }
 
+#close-area-text {
+    position: absolute;
+    margin-top: 0;
+    font-size: 14px;
+}
+
 #menu-button {
     font-size: 18px;
     width: 100%; 

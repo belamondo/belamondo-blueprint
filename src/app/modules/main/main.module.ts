@@ -12,6 +12,8 @@ import { MainComponent } from './main.component';
  */
 import { MainRoutingModule } from './main-routing.module';
 import { SharedModule } from './../shared/shared.module';
+import { EventComponent } from './components/event/event.component';
+import { ItemComponent } from './components/item/item.component';
 
 @NgModule({
   imports: [
@@ -21,7 +23,9 @@ import { SharedModule } from './../shared/shared.module';
   ],
   declarations: [
     DashboardComponent,
-    MainComponent
+    MainComponent,
+    EventComponent,
+    ItemComponent
   ]
 })
 export class MainModule { }

@@ -15,5 +15,4 @@ export class StringToHtmlPipe implements PipeTransform {
     if (!value) return value;
     return this.sanitizer.bypassSecurityTrustStyle(value);
   }
-
 }
