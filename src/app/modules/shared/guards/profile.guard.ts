@@ -5,16 +5,14 @@ import { Observable } from 'rxjs/Observable';
 /**
  * Services
  */
-import { AuthenticationService } from './../services/laravel/authentication.service';
-import { CrudService } from '../services/laravel/crud.service';
+import { FirebaseAuthenticationService } from './../services/firebase/firebase-authentication.service';
 
 
 @Injectable()
 export class ProfileGuard implements CanActivate {
   userType: boolean = false;
   constructor(
-    private authentication: AuthenticationService,
-    private crud: CrudService,
+    private authentication: FirebaseAuthenticationService,
     private route: ActivatedRoute,
     private router: Router
   ) {}

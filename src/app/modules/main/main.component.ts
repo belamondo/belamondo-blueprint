@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 /**
  * Services
  */
-import { AuthenticationService } from './../shared/services/laravel/authentication.service';
+import { FirebaseAuthenticationService } from './../shared/services/firebase/firebase-authentication.service';
 
 @Component({
   selector: 'app-main',
@@ -17,13 +17,13 @@ export class MainComponent implements OnInit {
   firstAndLastName: string;
 
   constructor(
-    private authService: AuthenticationService
+    private authService: FirebaseAuthenticationService
   ) {
 
   }
 
   ngOnInit() {
-    this.authService
+    /*this.authService
     .setUser()
     .then(res => {
       this.user = res;
@@ -45,6 +45,6 @@ export class MainComponent implements OnInit {
           routeAfterLogout: ['/login']
         }, textToCloseArea: this.firstAndLastName
       };
-    })
+    })*/
   }
 }

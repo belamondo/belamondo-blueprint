@@ -17,7 +17,8 @@ import {
   MatSlideToggleModule,
   MatSnackBarModule,
   MatStepperModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatGridListModule
 } from '@angular/material';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -42,7 +43,10 @@ import { ProfileGuard } from './guards/profile.guard';
 /**
  * Modules
  */
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { TextMaskModule } from 'angular2-text-mask';
+
 
 /**
  * Pipes
@@ -52,11 +56,18 @@ import { StringToHtmlPipe } from './pipes/string-to-html.pipe';
 /**
  * Services
  */
-import { AuthenticationService } from './services/laravel/authentication.service';
-import { CrudService } from './services/laravel/crud.service';
+import { FirebaseAuthenticationService } from './services/firebase/firebase-authentication.service';
+
+/**
+ * Settings
+ */
+import { firebaseEnvironment } from './../../../environments/environment';
+export const firebaseConfig = firebaseEnvironment;
 
 @NgModule({
   imports: [
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
     CommonModule,
     MatButtonModule,
     MatCardModule,
@@ -66,6 +77,7 @@ import { CrudService } from './services/laravel/crud.service';
     MatDialogModule,
     MatIconModule,
     MatInputModule,
+    MatGridListModule,
     MatNativeDateModule,
     MatProgressBarModule,
     MatRadioModule,
@@ -78,6 +90,8 @@ import { CrudService } from './services/laravel/crud.service';
     TextMaskModule
   ],
   exports:[
+    AngularFireModule,
+    AngularFirestoreModule,
     LoginComponent,
     LogoutComponent,
     MatButtonModule,
@@ -88,6 +102,7 @@ import { CrudService } from './services/laravel/crud.service';
     MatDialogModule,
     MatIconModule,
     MatInputModule,
+    MatGridListModule,
     MatNativeDateModule,
     MatProgressBarModule,
     MatRadioModule,
@@ -108,9 +123,8 @@ import { CrudService } from './services/laravel/crud.service';
     StringToHtmlPipe
   ],
   providers: [
-    AuthenticationService,
+    FirebaseAuthenticationService,
     AuthGuard,
-    CrudService,
     ProfileGuard
   ],
   entryComponents: [

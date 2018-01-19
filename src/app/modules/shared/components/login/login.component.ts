@@ -4,7 +4,7 @@ import { MatSnackBar, MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 
 /**Services */
-import { AuthenticationService } from './../../services/laravel/authentication.service'
+import { FirebaseAuthenticationService } from './../../services/firebase/firebase-authentication.service'
 
 /**
  * Components
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   imageTitle: string;
 
   constructor(
-    private authentication: AuthenticationService,
+    private authentication: FirebaseAuthenticationService,
     public dialog: MatDialog,
     private matsnackbar: MatSnackBar,
     private router: Router

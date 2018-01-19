@@ -1,3 +1,12 @@
 <mat-card>
-  Dashboard Geral
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <mat-input-container floatPlaceholder="auto">
+        <input matInput formControlName="name"
+               type="text"
+               required
+               placeholder="Name">
+    </mat-input-container>
+
+    <button mat-button type="submit">Cadastrar</button>
+  </form>
 </mat-card>
